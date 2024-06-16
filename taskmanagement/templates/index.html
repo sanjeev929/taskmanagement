@@ -1,14 +1,67 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>User Registration</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+    {% load static %}
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static "index.css" %}'>
 </head>
 <body>
-    <h2>task Management10</h2>
+    <h2>Task Management - User Registration</h2>
+    <form id="registrationForm" method="post" action="">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Name:</label><br>
+            <input type="text" id="id_username" name="username" required>
+        </div>
+        <div>
+            <label for="id_email">Email:</label><br>
+            <input type="email" id="id_email" name="email" required>
+        </div>
+        <div>
+            <label for="id_password">Password:</label><br>
+            <input type="password" id="id_password" name="password" required>
+            <span id="passwordMessage" class="message"></span>
+        </div>
+        <div>
+            <label for="id_confirm_password">Retype Password:</label><br>
+            <input type="password" id="id_confirm_password" name="confirm_password" required>
+            <span id="confirmPasswordMessage" class="message"></span>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    var password = document.getElementById('id_password').value;
+    var confirmPassword = document.getElementById('id_confirm_password').value;
+    var passwordMessage = document.getElementById('passwordMessage');
+    var confirmPasswordMessage = document.getElementById('confirmPasswordMessage');
+    var passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+    // Check password complexity
+    if (!passwordPattern.test(password)) {
+        passwordMessage.textContent = 'Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.';
+        passwordMessage.style.color = 'red';
+        event.preventDefault();
+    } else {
+        passwordMessage.textContent = 'Password is valid.';
+        passwordMessage.style.color = 'green';
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        confirmPasswordMessage.textContent = 'Passwords do not match!';
+        confirmPasswordMessage.style.color = 'red';
+        event.preventDefault();
+    } else {
+        confirmPasswordMessage.textContent = 'Passwords match.';
+        confirmPasswordMessage.style.color = 'green';
+    }
+});
+
+</script>
 </body>
 </html>
