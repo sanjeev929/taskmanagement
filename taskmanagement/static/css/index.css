@@ -1,0 +1,85 @@
+/* styles.css */
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f5;
+    color: #333;
+    position: relative; /* Ensure positioning context */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.navbar-left a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+.navbar-left a img {
+    margin-right: 5px;
+}
+
+.navbar-left a:hover {
+    transform: translateY(-3px);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right .nav-link {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+.navbar-right .nav-link img {
+    margin-right: 5px;
+}
+
+.navbar-right .nav-link:hover {
+    transform: translateY(-3px);
+}
+
+.username-card {
+    width: auto; /* Adjusts width automatically based on content */
+    height: 75px;
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-out;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 35px;
+    white-space: nowrap; /* Prevents wrapping of text */
+}
+
+.username-card:hover {
+    transform: translateY(-3px);
+}

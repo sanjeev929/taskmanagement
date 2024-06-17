@@ -15,6 +15,9 @@
         </div>
         <div class="form-container">
             <h2>User Login</h2>
+            {% if message %}
+            <h4>{{message}}</h4>
+            {% endif %}
             <form id="registrationForm" method="post" action="">
                 {% csrf_token %}
                 <div>
@@ -32,34 +35,5 @@
             <a href="/registration/">Registration</a>
         </div>
     </div>
-    <script>
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            var password = document.getElementById('id_password').value;
-            var confirmPassword = document.getElementById('id_confirm_password').value;
-            var passwordMessage = document.getElementById('passwordMessage');
-            var confirmPasswordMessage = document.getElementById('confirmPasswordMessage');
-            var passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-            // Check password complexity
-            if (!passwordPattern.test(password)) {
-                passwordMessage.textContent = 'Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.';
-                passwordMessage.className = 'message error';
-                event.preventDefault();
-            } else {
-                passwordMessage.textContent = 'Password is valid.';
-                passwordMessage.className = 'message success';
-            }
-
-            // Check if passwords match
-            if (password !== confirmPassword) {
-                confirmPasswordMessage.textContent = 'Passwords do not match!';
-                confirmPasswordMessage.className = 'message error';
-                event.preventDefault();
-            } else {
-                confirmPasswordMessage.textContent = 'Passwords match.';
-                confirmPasswordMessage.className = 'message success';
-            }
-        });
-    </script>
-</body>
+    </body>
 </html>

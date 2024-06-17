@@ -81,7 +81,8 @@ DATABASES = {
     }
 }
 
-
+MONGODB_URI = 'mongodb://localhost:27017/' 
+MONGODB_NAME = 'task'
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -123,7 +124,7 @@ if DEBUG:
 else:
     STATICFILES_DIRS=[]
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -15,6 +15,10 @@
         </div>
         <div class="form-container">
             <h2>User Registration</h2>
+            {% if message %}
+                <h4>{{message}}</h4>
+            {% endif %}
+
             <form id="registrationForm" method="post" action="">
                 {% csrf_token %}
                 <div>

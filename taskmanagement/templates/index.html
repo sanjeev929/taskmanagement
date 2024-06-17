@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/index.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="#"><img src="{% static 'images/home.png' %}" alt="Home Icon"> Home</a>
+            <a href="#"><img src="{% static 'images/tasks.png' %}" alt="Tasks Icon"> Tasks</a>
+            <a href="#"><img src="{% static 'images/create-task.png' %}" alt="Create Task Icon"> Create Task</a>
+            <a href="#"><img src="{% static 'images/notifications.png' %}" alt="Notifications Icon"> Notifications</a>
+        </div>
+        <div class="navbar-right">
+            <a href="#" class="nav-link"><img src="{% static 'images/logout.png' %}" alt="Logout Icon"> Logout</a>
+        </div>
+    </div>
+
+    <div class="username-card">
+        <span class="username">Welcome John Doe...</span>
+    </div>
+
+    <!-- Your main content here -->
+
+</body>
+</html>
