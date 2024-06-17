@@ -33,6 +33,8 @@ body {
 
 .navbar-left a img {
     margin-right: 5px;
+    width: 60px; /* Adjust the width of the icon */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .navbar-left a:hover {
@@ -55,6 +57,8 @@ body {
 
 .navbar-right .nav-link img {
     margin-right: 5px;
+    width: 60px; /* Adjust the width of the icon */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .navbar-right .nav-link:hover {
@@ -63,9 +67,9 @@ body {
 
 .username-card {
     width: auto; /* Adjusts width automatically based on content */
-    height: 75px;
+    height: auto;
     position: absolute;
-    top: 100px;
+    top: 130px;
     left: 10px;
     background-color: #ffffff;
     padding: 10px;
@@ -76,7 +80,7 @@ body {
 
 .username {
     font-weight: bold;
-    font-size: 35px;
+    font-size: 28px;
     white-space: nowrap; /* Prevents wrapping of text */
 }
 
