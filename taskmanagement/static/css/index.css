@@ -81,7 +81,14 @@ body {
 .username {
     font-weight: bold;
     font-size: 28px;
+    font-style:oblique;
     white-space: nowrap; /* Prevents wrapping of text */
+}
+.welcome {
+    font-weight: bold;
+    font-size: 35px;
+    font-style: italic;
+    white-space: nowrap;
 }
 
 .username-card:hover {
