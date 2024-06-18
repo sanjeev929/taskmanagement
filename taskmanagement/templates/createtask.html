@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create Task</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/createtask.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}"><img src="{% static 'image/home.png' %}" alt="Home Icon"> Home</a>
+            <a href="/tasks/" class="nav-link {% if request.path == '/tasks/' %}active{% endif %}"><img src="{% static 'image/task.png' %}" alt="Tasks Icon"> Tasks</a>
+            <a href="/createtask/" class="nav-link {% if request.path == '/createtask/' %}active{% endif %}"><img src="{% static 'image/create.png' %}" alt="Create Task Icon"> Create Task</a>
+            <a href="/notifications/" class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"><img src="{% static 'image/notification.gif' %}" alt="Notifications Icon"> Notifications</a>
+        </div>
+        <div class="navbar-right">
+            <a href="/logout/" class="nav-link {% if request.path == '/logout/' %}active{% endif %}"><img src="{% static 'image/logout.png' %}" alt="Logout Icon"> Logout</a>
+        </div>
+    </div>
+
+    <!-- Task Form -->
+    <div class="task-form-container">
+        <form action="/createtask/" method="POST" class="task-form" onsubmit="formatTime()">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="task_name">Task Name:</label>
+                <input type="text" id="task_name" name="task_name" required>
+            </div>
+            <div class="form-group">
+                <label for="task_description">Task Description:</label>
+                <textarea id="task_description" name="task_description" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="due_date">Due Date:</label>
+                <input type="date" id="due_date" name="due_date" required>
+            </div>
+            <div class="form-group">
+                <label for="due_time">Due Time:</label>
+                <input type="time" id="due_time" name="due_time" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn-submit">Create Task</button>
+            </div>
+            <!-- Hidden input to store formatted time -->
+            <input type="hidden" id="formatted_due_time" name="formatted_due_time">
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#due_time", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "h:i K",
+            time_24hr: false,
+            minuteIncrement: 1,
+            onChange: function(selectedDates, dateStr, instance) {
+                document.getElementById('formatted_due_time').value = dateStr;
+            }
+        });
+    </script>
+</body>
+</html>

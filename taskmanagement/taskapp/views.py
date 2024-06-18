@@ -51,3 +51,18 @@ def login(request):
             }
             return render(request, 'login.html', context)
     return render(request,"login.html")
+
+def logout(request):
+    response = redirect('/login/')
+    response.delete_cookie('email')
+    return response
+
+def createtask(request):
+    if request.method == "POST":
+        taskname = request.POST[""]
+        taskname = request.POST[""]
+        taskname = request.POST[""]
+        taskname = request.POST[""]
+
+    return render(request,"createtask.html")
+
