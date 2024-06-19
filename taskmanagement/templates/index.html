@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>User Registration</title>
+    <title>User Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/index.css' %}">
 </head>
@@ -22,7 +22,17 @@
     </div>
 
     <div class="username-card">
-        <span class="welcome">Hello  </span><span class="username">{{name}}...</span>
+        <span class="welcome">Hello </span><span class="username">{{ name }}...</span>
+    </div>
+
+    <div class="task-cards-container">
+        {% for taskname,taskdesc,time in alltasks%}
+        <div class="task-card">
+            <h3>{{ taskname }}</h3>
+            <p>{{ taskdesc }}</p>
+            <p><strong>Due:</strong> {{ time }}</p>
+        </div>
+        {% endfor %}
     </div>
 </body>
 </html>

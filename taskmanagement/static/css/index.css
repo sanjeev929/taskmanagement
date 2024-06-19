@@ -81,9 +81,10 @@ body {
 .username {
     font-weight: bold;
     font-size: 28px;
-    font-style:oblique;
+    font-style: oblique;
     white-space: nowrap; /* Prevents wrapping of text */
 }
+
 .welcome {
     font-weight: bold;
     font-size: 35px;
@@ -99,4 +100,49 @@ body {
 .nav-link.active {
     background-color: #d4dce0; /* Highlight the selected option */
     border-radius: 5px;
+}
+
+/* Task cards container */
+.task-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+/* Task card styles */
+.task-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    width: 30%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease-out;
+}
+
+.task-card:hover {
+    transform: translateY(-5px);
+}
+
+.task-card h3 {
+    margin-top: 0;
+}
+
+.task-card p {
+    margin: 10px 0;
+}
+
+/* Additional styling for task card content */
+.task-card p strong {
+    font-weight: bold;
+}
+
+.task-cards-container .task-card:nth-child(3n+1) {
+    margin-left: 0;
+}
+
+.task-cards-container .task-card:nth-child(3n+3) {
+    margin-right: 0;
 }

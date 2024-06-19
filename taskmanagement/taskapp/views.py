@@ -23,12 +23,11 @@ def index(request):
                 taskname.append(item["taskname"])
                 task_description.append(item["task_description"])
                 due_time.append(item["due_time"])
+        alltasks = zip(taskname,task_description,due_time)        
 
         context={
             "name":user["name"],
-            "taskname":taskname,
-            "task_description":task_description,
-            "due_time":due_time
+            "alltasks":alltasks
         }
         return render(request,"index.html",context)
     return redirect('/login/')
