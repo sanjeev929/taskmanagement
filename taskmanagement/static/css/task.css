@@ -1,0 +1,169 @@
+/* styles.css */
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #d4dce0;
+    color: #333;
+    position: relative; /* Ensure positioning context */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.navbar-left {
+    display: flex;
+}
+
+.navbar-left a {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+.navbar-left a img {
+    margin-right: 5px;
+    width: 50px; /* Adjust the width of the icon */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.navbar-left a:hover {
+    transform: translateY(-3px);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right .nav-link {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    padding: 10px;
+    transition: transform 0.2s ease-out;
+}
+
+.navbar-right .nav-link img {
+    margin-right: 5px;
+    width: 50px; /* Adjust the width of the icon */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.navbar-right .nav-link:hover {
+    transform: translateY(-3px);
+}
+
+.username-card {
+    width: auto; /* Adjusts width automatically based on content */
+    height: auto;
+    position: absolute;
+    top: 130px;
+    left: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-out;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 28px;
+    font-style: oblique;
+    white-space: nowrap; /* Prevents wrapping of text */
+}
+
+.welcome {
+    font-weight: bold;
+    font-size: 35px;
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.username-card:hover {
+    transform: translateY(-3px);
+}
+
+/* New styles for active nav link */
+.nav-link.active {
+    background-color: #d4dce0; /* Highlight the selected option */
+    border-radius: 5px;
+}
+
+/* Task table container */
+.task-table-container {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+/* Task table styles */
+.task-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.task-table th, .task-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.task-table tr:hover {
+    background-color: #f1f1f1;
+    transform: translateY(-3px);
+}
+
+.btn-edit, .btn-delete {
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #4caf50; /* Green */
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336; /* Red */
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f;
+}
+
+input[type="text"], input[type="date"], input[type="time"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

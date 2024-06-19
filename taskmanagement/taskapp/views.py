@@ -100,3 +100,21 @@ def createtask(request):
 
     return render(request,"createtask.html")
 
+def tasks(request):
+    alltasks = list(alltaskscollection.find())
+    taskname =[]
+    task_description =[]
+    due_date = []
+    due_time =[]
+    date = datetime.now()
+    date = date.strftime("%Y-%m-%d")
+    for item in alltasks:
+        taskname.append(item["taskname"])
+        task_description.append(item["task_description"])
+        due_date.append(item["due_date"])
+        due_time.append(item["due_time"])
+    alltasks = zip(taskname,task_description,due_date,due_time) 
+    context = {
+        "alltasks":alltasks
+    }
+    return render(request,"task.html",context)     

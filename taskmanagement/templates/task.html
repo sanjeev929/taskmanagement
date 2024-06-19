@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>User Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/task.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}"><img src="{% static 'image/home.png' %}" alt="Home Icon"> Home</a>
+            <a href="/tasks/" class="nav-link {% if request.path == '/tasks/' %}active{% endif %}"><img src="{% static 'image/task.png' %}" alt="Tasks Icon"> Tasks</a>
+            <a href="/createtask/" class="nav-link {% if request.path == '/createtask/' %}active{% endif %}"><img src="{% static 'image/create.png' %}" alt="Create Task Icon"> Create Task</a>
+            <a href="/notifications/" class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"><img src="{% static 'image/notification.gif' %}" alt="Notifications Icon"> Notifications</a>
+        </div>
+        <div class="navbar-right">
+            <a href="/logout/" class="nav-link {% if request.path == '/logout/' %}active{% endif %}"><img src="{% static 'image/logout.png' %}" alt="Logout Icon"> Logout</a>
+        </div>
+    </div>
+
+    <div class="task-table-container">
+        <table class="task-table">
+            <thead>
+                <tr>
+                    <th>Task Name</th>
+                    <th>Description</th>
+                    <th>Due Date</th>
+                    <th>Due Time</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task_name,task_description,due_date,due_time in alltasks %}
+                <tr>
+                    <form method="post" action="/edit-task/{{ task.task_id }}">
+                        {% csrf_token %}
+                        <td><input type="text" name="task_name" value="{{ task_name }}"></td>
+                        <td><input type="text" name="task_description" value="{{ task_description }}"></td>
+                        <td><input type="date" name="due_date" value="{{ due_date }}"></td>
+                        <td><input type="text" class="due_time" name="due_time" value="{{ due_time }}"></td>
+                        <td><button type="submit" class="btn-edit">Save</button></td>
+                    </form>
+                    <td>
+                        <form method="post" action="/delete-task/{{ task_name }}">
+                            <input type="hidden" name="task_name" value="{{ task_name }}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-delete">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr(".due_time", {
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "h:i K",
+                time_24hr: false,
+                minuteIncrement: 1,
+                position: 'auto',  // Ensures the picker shows below the input field
+                appendTo: document.body // Attach the picker to the body to avoid positioning issues
+            });
+        });
+    </script>    
+</body>
+</html>
