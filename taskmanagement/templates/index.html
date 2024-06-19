@@ -24,13 +24,15 @@
     <div class="username-card">
         <span class="welcome">Hello </span><span class="username">{{ name }}...</span>
     </div>
-
+    <div class="todaystask-card">
+    <span class="todaystask">Today's Tasks</span>
+    </div>
     <div class="task-cards-container">
         {% for taskname,taskdesc,time in alltasks%}
         <div class="task-card">
             <h3>{{ taskname }}</h3>
             <p>{{ taskdesc }}</p>
-            <p><strong>Due:</strong> {{ time }}</p>
+            <p><strong>Time:</strong> {{ time }}</p>
         </div>
         {% endfor %}
     </div>

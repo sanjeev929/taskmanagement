@@ -96,6 +96,29 @@ body {
     transform: translateY(-3px);
 }
 
+.todaystask-card{
+    width: auto; /* Adjusts width automatically based on content */
+    height: auto;
+    position: absolute;
+    top: 200px;
+    left: 10px;
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-out;
+}
+.todaystask{
+    font-weight:900;
+    font-size: 20px;
+    font-style: italic;
+    white-space: nowrap;
+    color: #9aacb5;
+}
+
+.todaystask-card:hover {
+    transform: translateY(-5px);
+}
 /* New styles for active nav link */
 .nav-link.active {
     background-color: #d4dce0; /* Highlight the selected option */
@@ -107,7 +130,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 170px;
 }
 
 /* Task card styles */
@@ -136,7 +159,7 @@ body {
 
 /* Additional styling for task card content */
 .task-card p strong {
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .task-cards-container .task-card:nth-child(3n+1) {
