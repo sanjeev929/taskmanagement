@@ -117,8 +117,8 @@ body {
     text-align: center;
     width: 25%;
     padding: 12px;
-    background: linear-gradient(45deg, #007bff, #0056b3);
-    color: white;
+    background: linear-gradient(45deg, #bbd8e6, #8ec8e6);
+    color: rgb(98, 98, 98);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -130,6 +130,6 @@ body {
 }
 
 .task-form .btn-submit:hover {
-    background: linear-gradient(45deg, #0056b3, #003580);
+    background: linear-gradient(45deg, #75a1b7, #5d96b2);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
 }

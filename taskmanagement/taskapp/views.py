@@ -120,7 +120,7 @@ def tasks(request):
             print("edit",id,task_name,task_description,due_date,due_time)
         if "delete" in request.POST:
             id = request.POST["task_id"]
-            print("edit",id) 
+            alltaskscollection.delete_one({"_id":ObjectId(id)})
 
     alltasks = list(alltaskscollection.find())
     objectid=[]
