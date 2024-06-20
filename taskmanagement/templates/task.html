@@ -35,21 +35,22 @@
                 </tr>
             </thead>
             <tbody>
-                {% for task_name,task_description,due_date,due_time in alltasks %}
+                {% for taskid,task_name,task_description,due_date,due_time in alltasks %}
                 <tr>
-                    <form method="post" action="/edit-task/{{ task.task_id }}">
+                    <form method="post" action="/tasks/">
                         {% csrf_token %}
                         <td><input type="text" name="task_name" value="{{ task_name }}"></td>
                         <td><input type="text" name="task_description" value="{{ task_description }}"></td>
                         <td><input type="date" name="due_date" value="{{ due_date }}"></td>
                         <td><input type="text" class="due_time" name="due_time" value="{{ due_time }}"></td>
-                        <td><button type="submit" class="btn-edit">Edit</button></td>
+                        <input type="hidden" name="task_id" value="{{ taskid }}">
+                        <td><button type="submit" name="edit" class="btn-edit">Edit</button></td>
                     </form>
                     <td>
-                        <form method="post" action="/delete-task/{{ task_name }}">
-                            <input type="hidden" name="task_name" value="{{ task_name }}">
+                        <form method="post" action="/tasks/">
+                            <input type="hidden" name="task_id" value="{{ taskid }}">
                             {% csrf_token %}
-                            <button type="submit" class="btn-delete">Delete</button>
+                            <button type="submit" name="delete" class="btn-delete">Delete</button>
                         </form>
                     </td>
                 </tr>

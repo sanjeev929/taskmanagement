@@ -2,7 +2,9 @@ from django.shortcuts import render,redirect
 import pymongo
 from django.conf import settings
 from datetime import datetime
+from bson import ObjectId
 client = pymongo.MongoClient(settings.MONGODB_URI)
+
 db = client[settings.MONGODB_NAME]
 usercollection = db['users']
 alltaskscollection = db['alltasks']
@@ -101,7 +103,27 @@ def createtask(request):
     return render(request,"createtask.html")
 
 def tasks(request):
+    if request.method == "POST":
+        if "edit" in request.POST:
+            id = request.POST["task_id"]
+            task_name = request.POST["task_name"]
+            task_description = request.POST["task_description"]
+            due_date = request.POST["due_date"]
+            due_time = request.POST["due_time"]
+            data ={
+                "taskname":task_name,
+                "task_description":task_description,
+                "due_date":due_date,
+                "due_time":due_time
+            }
+            alltaskscollection.update_many({"_id":ObjectId(id)},{"$set":data})
+            print("edit",id,task_name,task_description,due_date,due_time)
+        if "delete" in request.POST:
+            id = request.POST["task_id"]
+            print("edit",id) 
+
     alltasks = list(alltaskscollection.find())
+    objectid=[]
     taskname =[]
     task_description =[]
     due_date = []
@@ -109,11 +131,12 @@ def tasks(request):
     date = datetime.now()
     date = date.strftime("%Y-%m-%d")
     for item in alltasks:
+        objectid.append(str(item["_id"]))
         taskname.append(item["taskname"])
         task_description.append(item["task_description"])
         due_date.append(item["due_date"])
         due_time.append(item["due_time"])
-    alltasks = zip(taskname,task_description,due_date,due_time) 
+    alltasks = zip(objectid,taskname,task_description,due_date,due_time) 
     context = {
         "alltasks":alltasks
     }
