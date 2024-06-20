@@ -141,3 +141,6 @@ def tasks(request):
         "alltasks":alltasks
     }
     return render(request,"task.html",context)     
+
+def notifications(request):
+    return render(request,"notifications.html")

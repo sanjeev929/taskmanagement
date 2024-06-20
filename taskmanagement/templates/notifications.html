@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Notification Example</title>
+    <!-- Include jQuery (optional, for simplicity in AJAX request) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        // Function to request permission and show browser notification
+        function showBrowserNotification() {
+            // Check if the browser supports notifications
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            } else if (Notification.permission === "granted") {
+                // If permission is already granted, create notification
+                createNotification();
+            } else if (Notification.permission !== 'denied') {
+                // Request permission from user
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === "granted") {
+                        createNotification();
+                    }
+                });
+            }
+        }
+
+        // Function to create the notification
+        function createNotification() {
+            var options = {
+                body: 'This is a simple notification from Django.'
+            };
+            
+            var notification = new Notification('Hello!', options);
+
+            // Optional: Handle click on notification
+            notification.onclick = function () {
+                window.focus();  // Focus the window/tab when notification is clicked
+                notification.close();  // Close the notification
+            };
+        }
+
+        // Example: Call showBrowserNotification() when page loads or as needed
+        $(document).ready(function () {
+            showBrowserNotification();
+        });
+    </script>
+</body>
+</html>

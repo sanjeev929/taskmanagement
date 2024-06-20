@@ -7,5 +7,6 @@ urlpatterns = [
     path("login/",views.login,name="login"),
     path("logout/",views.logout,name="logout"),
     path("createtask/",views.createtask,name="createtask"),
-    path("tasks/",views.tasks,name="tasks")
+    path("tasks/",views.tasks,name="tasks"),
+    path("notifications/",views.notifications,name="notifications")
 ]
