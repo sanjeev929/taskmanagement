@@ -1,3 +1,5 @@
+
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,10 +33,11 @@
         // Function to create the notification
         function createNotification() {
             var options = {
-                body: 'This is a simple notification from Django.'
+                body: 'This is a simple notification from Django.',
+                icon: '{% static "image/notification.gif" %}', // Replace with path to your icon
             };
             
-            var notification = new Notification('Hello!', options);
+            var notification = new Notification('Hello {{name}}', options);
 
             // Optional: Handle click on notification
             notification.onclick = function () {

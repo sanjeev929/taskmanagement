@@ -143,4 +143,25 @@ def tasks(request):
     return render(request,"task.html",context)     
 
 def notifications(request):
-    return render(request,"notifications.html")
+    email = request.COOKIES.get('email')
+    if email is not None:
+        user = usercollection.find_one({"mail":email})
+        alltasks = list(alltaskscollection.find({"email":email}))
+        taskname =[]
+        task_description =[]
+        due_time =[]
+        date = datetime.now()
+        date = date.strftime("%Y-%m-%d")
+        for item in alltasks:
+            print(item["due_date"],date)
+            if item["due_date"] == date:
+                taskname.append(item["taskname"])
+                task_description.append(item["task_description"])
+                due_time.append(item["due_time"])
+        alltasks = zip(taskname,task_description,due_time)        
+
+        context={
+            "name":user["name"],
+        }
+        return render(request,"notifications.html",context)
+    return redirect('/login/')
