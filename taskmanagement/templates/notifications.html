@@ -41,11 +41,10 @@
 
             // Optional: Handle click on notification
             notification.onclick = function () {
-                window.focus();  // Focus the window/tab when notification is clicked
+                window.location="/";  // Focus the window/tab when notification is clicked
                 notification.close();  // Close the notification
             };
         }
-
         // Example: Call showBrowserNotification() when page loads or as needed
         $(document).ready(function () {
             showBrowserNotification();
