@@ -25,7 +25,8 @@ body {
 .navbar-left a {
     display: flex;
     align-items: center;
-    color: #333;
+    color: #5d96b2;
+    font-weight: 700;
     text-decoration: none;
     padding: 10px;
     transition: transform 0.2s ease-out;
@@ -49,7 +50,8 @@ body {
 .navbar-right .nav-link {
     display: flex;
     align-items: center;
-    color: #333;
+    color: #5d96b2;
+    font-weight: 700;
     text-decoration: none;
     padding: 10px;
     transition: transform 0.2s ease-out;

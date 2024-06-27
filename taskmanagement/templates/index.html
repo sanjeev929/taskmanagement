@@ -33,9 +33,12 @@
             <h3>{{ task.taskname }}</h3>
             <p>{{ task.task_description }}</p>
             <p><strong>Time:</strong> {{ task.due_time }}</p>
+            <img class="card-image" src="{% static 'image/done.gif' %}" alt="Notification Icon">
+            <button class="submit-button" type="submit">Finish</button>
         </div>
         {% endfor %}
     </div>
+    <script src="{% static 'js/main.js' %}"></script>
     <script>
         function createNotification(taskName, taskDesc, time) {
             var options = {

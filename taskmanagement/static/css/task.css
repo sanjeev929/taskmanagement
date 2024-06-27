@@ -23,7 +23,8 @@ body {
 .navbar-left a {
     display: flex;
     align-items: center;
-    color: #333;
+    color: #5d96b2;
+    font-weight: 700;
     text-decoration: none;
     padding: 10px;
     transition: transform 0.2s ease-out;
@@ -47,7 +48,8 @@ body {
 .navbar-right .nav-link {
     display: flex;
     align-items: center;
-    color: #333;
+    color: #5d96b2;
+    font-weight: 700;
     text-decoration: none;
     padding: 10px;
     transition: transform 0.2s ease-out;
@@ -126,6 +128,7 @@ body {
     background-color: #f4f4f4;
     font-weight: bold;
     text-align: center;
+    color: #5d96b2;
 }
 
 .task-table tr:hover {
@@ -141,7 +144,7 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
-    color: #333;
+    color: #5d96b2;
     font-weight: bold;
     transition: transform 0.2s ease;
 }
@@ -162,4 +165,6 @@ input[type="text"], input[type="date"], input[type="time"] {
     box-sizing: border-box;
     border: 1px solid #ddd;
     border-radius: 4px;
+    color: #5d96b2;
+    font-weight: 600;
 }

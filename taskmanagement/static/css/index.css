@@ -1,70 +1,54 @@
-/* styles.css */
-
+/* General body styling */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #d4dce0;
-    color: #333;
+    color: #9eb3be;
     position: relative; /* Ensure positioning context */
 }
 
+/* Navbar styling */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #9eb3be;
     background-color: #ffffff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 10px;
 }
 
-.navbar-left {
-    display: flex;
-}
-
-.navbar-left a {
+.navbar-left, .navbar-right {
     display: flex;
     align-items: center;
-    color: #333;
+}
+
+.navbar-left a, .navbar-right a {
+    display: flex;
+    align-items: center;
+    color: #5d96b2;
+    font-weight: 700;
     text-decoration: none;
     padding: 10px;
     transition: transform 0.2s ease-out;
 }
 
-.navbar-left a img {
+.navbar-left a img, .navbar-right a img {
     margin-right: 5px;
     width: 50px; /* Adjust the width of the icon */
     height: auto; /* Maintain aspect ratio */
 }
 
-.navbar-left a:hover {
+.navbar-left a:hover, .navbar-right a:hover {
     transform: translateY(-3px);
 }
-
-.navbar-right {
-    display: flex;
-    align-items: center;
+.nav-link.active {
+    background-color: #d4dce0; /* Highlight the selected option */
+    border-radius: 5px;
 }
 
-.navbar-right .nav-link {
-    display: flex;
-    align-items: center;
-    color: #333;
-    text-decoration: none;
-    padding: 10px;
-    transition: transform 0.2s ease-out;
-}
-
-.navbar-right .nav-link img {
-    margin-right: 5px;
-    width: 50px; /* Adjust the width of the icon */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.navbar-right .nav-link:hover {
-    transform: translateY(-3px);
-}
-
+/* Username card styling */
 .username-card {
     width: auto; /* Adjusts width automatically based on content */
     height: auto;
@@ -72,6 +56,7 @@ body {
     top: 130px;
     left: 10px;
     background-color: #ffffff;
+    color: #9eb3be;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -83,6 +68,7 @@ body {
     font-size: 28px;
     font-style: oblique;
     white-space: nowrap; /* Prevents wrapping of text */
+    color: #5d96b2;
 }
 
 .welcome {
@@ -90,13 +76,15 @@ body {
     font-size: 35px;
     font-style: italic;
     white-space: nowrap;
+    color: #5d96b2;
 }
 
 .username-card:hover {
     transform: translateY(-3px);
 }
 
-.todaystask-card{
+/* Today's task card styling */
+.todaystask-card {
     width: auto; /* Adjusts width automatically based on content */
     height: auto;
     position: absolute;
@@ -108,24 +96,20 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease-out;
 }
-.todaystask{
-    font-weight:900;
+
+.todaystask {
+    font-weight: 900;
     font-size: 20px;
     font-style: italic;
     white-space: nowrap;
-    color: #9aacb5;
+    color: #5d96b2;
 }
 
 .todaystask-card:hover {
     transform: translateY(-5px);
 }
-/* New styles for active nav link */
-.nav-link.active {
-    background-color: #d4dce0; /* Highlight the selected option */
-    border-radius: 5px;
-}
 
-/* Task cards container */
+/* Task cards container styling */
 .task-cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -133,7 +117,7 @@ body {
     margin-top: 170px;
 }
 
-/* Task card styles */
+/* Task card styling */
 .task-card {
     background-color: #ffffff;
     border-radius: 8px;
@@ -142,6 +126,7 @@ body {
     padding: 20px;
     width: 30%;
     box-sizing: border-box;
+    position: relative; /* Ensure positioning context */
     transition: transform 0.2s ease-out;
 }
 
@@ -151,21 +136,47 @@ body {
 
 .task-card h3 {
     margin-top: 0;
+    font-weight: 600;
+    color: #5d96b2;
 }
 
 .task-card p {
     margin: 10px 0;
+    font-weight: 600;
+    font-style:initial;
+    color: #5d96b2;
+
 }
 
-/* Additional styling for task card content */
-.task-card p strong {
-    font-weight: 800;
+/* Submit button styling */
+.submit-button {
+    position: absolute;
+    bottom: 10px;
+    right: 20px; /* Adjusted to be on the right */
+    background: linear-gradient(45deg, #bbd8e6, #8ec8e6);
+    color: rgb(255, 255, 255);
+    font-weight: 900;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease, transform 0.2s ease-out;
 }
 
-.task-cards-container .task-card:nth-child(3n+1) {
-    margin-left: 0;
+
+.submit-button:hover {
+    background: linear-gradient(45deg, #75a1b7, #5d96b2);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Move button up slightly on hover */
 }
 
-.task-cards-container .task-card:nth-child(3n+3) {
-    margin-right: 0;
+/* Card image styling */
+.card-image {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px; /* Adjust image size */
+    height: 30px; /* Adjust image size */
 }
