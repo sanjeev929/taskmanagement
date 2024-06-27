@@ -7,6 +7,7 @@
     <title>User Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/index.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="navbar">
@@ -14,7 +15,6 @@
             <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}"><img src="{% static 'image/home.png' %}" alt="Home Icon"> Home</a>
             <a href="/tasks/" class="nav-link {% if request.path == '/tasks/' %}active{% endif %}"><img src="{% static 'image/task.png' %}" alt="Tasks Icon"> Tasks</a>
             <a href="/createtask/" class="nav-link {% if request.path == '/createtask/' %}active{% endif %}"><img src="{% static 'image/create.png' %}" alt="Create Task Icon"> Create Task</a>
-            <a href="/notifications/" class="nav-link {% if request.path == '/notifications/' %}active{% endif %}"><img src="{% static 'image/notification.gif' %}" alt="Notifications Icon"> Notifications</a>
         </div>
         <div class="navbar-right">
             <a href="/logout/" class="nav-link {% if request.path == '/logout/' %}active{% endif %}"><img src="{% static 'image/logout.png' %}" alt="Logout Icon"> Logout</a>
@@ -25,16 +25,60 @@
         <span class="welcome">Hello </span><span class="username">{{ name }}...</span>
     </div>
     <div class="todaystask-card">
-    <span class="todaystask">Today's Tasks</span>
+        <span class="todaystask">Today's Tasks</span>
     </div>
     <div class="task-cards-container">
-        {% for taskname,taskdesc,time in alltasks%}
+        {% for task in alltasks1 %}
         <div class="task-card">
-            <h3>{{ taskname }}</h3>
-            <p>{{ taskdesc }}</p>
-            <p><strong>Time:</strong> {{ time }}</p>
+            <h3>{{ task.taskname }}</h3>
+            <p>{{ task.task_description }}</p>
+            <p><strong>Time:</strong> {{ task.due_time }}</p>
         </div>
         {% endfor %}
     </div>
+    <script>
+        function createNotification(taskName, taskDesc, time) {
+            var options = {
+                body: `${taskName} - ${taskDesc}\nDue Time: ${time}`,
+                icon: '{% static "image/notification.gif" %}', // Replace with path to your icon
+            };
+
+            var notification = new Notification('Task remainder for {{name}}', options);
+
+            // Optional: Handle click on notification
+            notification.onclick = function () {
+                window.location = "/";  // Focus the window/tab when notification is clicked
+                notification.close();  // Close the notification
+            };
+        }
+
+        function showBrowserNotification(taskName, taskDesc, time) {
+            // Check if the browser supports notifications
+            if (!("Notification" in window)) {
+                alert("This browser does not support desktop notification");
+            } else if (Notification.permission === "granted") {
+                // If it's okay to show the notification
+                createNotification(taskName, taskDesc, time);
+            } else if (Notification.permission !== "denied") {
+                // Otherwise, ask the user for permission
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === "granted") {
+                        createNotification(taskName, taskDesc, time);
+                    }
+                });
+            }
+        }
+        console.log("========1")
+        $(document).ready(function () {
+            // Tasks array from Django template
+            var allTasks = JSON.parse('{{ all_tasks|escapejs }}');
+            console.log("========2", allTasks);
+            // Loop through tasks and show notifications
+            allTasks.forEach(function (task) {
+                console.log("========3", task);
+                showBrowserNotification(task.taskname, task.task_description, task.due_time);
+            });
+        });
+    </script>
 </body>
 </html>
