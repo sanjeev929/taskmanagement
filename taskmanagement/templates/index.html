@@ -34,7 +34,11 @@
             <p>{{ task.task_description }}</p>
             <p><strong>Time:</strong> {{ task.due_time }}</p>
             <img class="card-image" src="{% static 'image/done.gif' %}" alt="Notification Icon">
-            <button class="submit-button" type="submit">Finish</button>
+            <form action="/" method="post">
+                {%csrf_token%}
+                <input type="hidden" name="taskid" value="{{task.taskid}}">
+                <button class="submit-button" name="delete" type="submit">Finish</button>
+            </form>
         </div>
         {% endfor %}
     </div>

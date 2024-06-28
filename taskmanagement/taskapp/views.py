@@ -14,9 +14,15 @@ alltaskscollection = db['alltasks']
 def index(request):
     email = request.COOKIES.get('email')
     if email is not None:
+        if request.method == "POST":
+            if "delete" in request.POST:
+                id = request.POST["taskid"]
+                print(id)
+                alltaskscollection.delete_one({"_id":ObjectId(id)})
+
         user = usercollection.find_one({"mail": email})
         alltasks = list(alltaskscollection.find({"email": email}))
-        
+        taskid = []
         taskname = []
         task_description = []
         due_time = []
@@ -25,12 +31,13 @@ def index(request):
         for item in alltasks:
             print(item["due_date"], date)
             if item["due_date"] == date:
+                taskid.append(str(item["_id"]))
                 taskname.append(item["taskname"])
                 task_description.append(item["task_description"])
                 due_time.append(item["due_time"])
 
-        alltasks1 = zip(taskname, task_description, due_time)
-        filtered_tasks = [{"taskname": t[0], "task_description": t[1], "due_time": t[2]} for t in alltasks1]
+        alltasks1 = zip(taskid,taskname, task_description, due_time)
+        filtered_tasks = [{"taskid": t[0],"taskname": t[1], "task_description": t[2], "due_time": t[3]} for t in alltasks1]
         print("dfhdjgwhcjsd",alltasks1)
 
         context = {
