@@ -151,6 +151,7 @@ def tasks(request):
         due_date.append(item["due_date"])
         due_time.append(item["due_time"])
     alltasks = zip(objectid,taskname,task_description,due_date,due_time) 
+    print(alltasks)
     context = {
         "alltasks":alltasks
     }

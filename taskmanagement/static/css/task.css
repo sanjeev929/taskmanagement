@@ -168,3 +168,161 @@ input[type="text"], input[type="date"], input[type="time"] {
     color: #5d96b2;
     font-weight: 600;
 }
+.todaystask {
+    text-align: center;
+    color: #ff0000; /* Change to your preferred color */
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    body {
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #d4dce0;
+        color: #333;
+        position: relative; /* Ensure positioning context */
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    .navbar-left {
+        display: flex;
+    }
+
+    .navbar-left a {
+        display: flex;
+        align-items: center;
+        color: #5d96b2;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 12px;
+        transition: transform 0.2s ease-out;
+    }
+
+    .navbar-left a img {
+        margin-right: 5px;
+        width: 25px; /* Adjust the width of the icon */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .navbar-left a:hover {
+        transform: translateY(-3px);
+    }
+
+    .navbar-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .navbar-right .nav-link {
+        display: flex;
+        align-items: center;
+        color: #5d96b2;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 12px;
+        transition: transform 0.2s ease-out;
+    }
+
+    .navbar-right .nav-link img {
+        margin-right: 5px;
+        width: 25px; /* Adjust the width of the icon */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .navbar-right .nav-link:hover {
+        transform: translateY(-3px);
+    }
+
+    /* New styles for active nav link */
+    .nav-link.active {
+        background-color: #d4dce0; /* Highlight the selected option */
+        border-radius: 5px;
+    }
+    
+    .task-table-container {
+        margin-top: 10px;
+        padding: 20px;
+        overflow-x: auto; /* Ensure container can scroll horizontally if needed */
+    }
+    
+    .task-table {
+        width: 360px; /* Adjust width as needed */
+        border-collapse: collapse;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        white-space: nowrap; /* Prevent wrapping of table cells */
+        display: block; /* Ensure the table can have a scrollable horizontal area */
+        overflow-x: auto; /* Enable horizontal scrolling */
+    }
+
+    .task-table td:first-child {
+        position: sticky;
+        left: 0;
+        background-color: #ffffff;
+        z-index: 3; /* Ensure header and first column stick correctly */
+    }
+    .task-table th:first-child{
+        position: sticky;
+        left: 0;
+        color: #5d96b2;
+        z-index: 3; /* Ensure header and first column stick correctly */
+    }
+    .task-table th {
+        padding: 15px;
+        text-align: center; /* Center align header text */
+        font-weight: bold;
+        color: #5d96b2;
+    }
+    
+    .task-table td {
+        padding: 15px;
+        text-align: left; /* Left align data cells */
+        border-bottom: 1px solid #ddd;
+        background-color: #ffffff; /* Match background of table */
+    }
+    
+    
+    /* Style for icon buttons */
+    .btn-icon {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        color: #5d96b2;
+        font-weight: bold;
+        transition: transform 0.2s ease;
+    }
+
+    .btn-icon img {
+        width: 30px; /* Adjust the size of the icon */
+        height: auto; /* Maintain aspect ratio */
+        margin-right: 5px;
+    }
+
+    .btn-icon:hover {
+        transform: translateY(-3px);
+    }
+
+    input[type="text"], input[type="date"], input[type="time"] {
+        width: 120px;
+        padding: 8px;
+        box-sizing: border-box;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        color: #5d96b2;
+        font-weight: 600;
+    }
+}

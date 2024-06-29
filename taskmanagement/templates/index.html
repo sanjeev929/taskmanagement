@@ -25,7 +25,11 @@
         <span class="welcome">Hello </span><span class="username">{{ name }}...</span>
     </div>
     <div class="todaystask-card">
+        {%if alltasks1%}
         <span class="todaystask">Today's Tasks</span>
+        {%else%}
+        <span class="todaystask">No task available</span>
+        {%endif%}
     </div>
     <div class="task-cards-container">
         {% for task in alltasks1 %}

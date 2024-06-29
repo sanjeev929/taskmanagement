@@ -22,22 +22,22 @@
     </div>
 
     <div class="task-table-container">
-        <table class="task-table">
-            <thead>
-                <tr>
-                    <th>Task Name</th>
-                    <th>Description</th>
-                    <th>Due Date</th>
-                    <th>Due Time</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for taskid,task_name,task_description,due_date,due_time in alltasks %}
-                <tr>
-                    <form method="post" action="/tasks/">
-                        {% csrf_token %}
+        <form method="post" action="/tasks/">
+            {% csrf_token %}
+            <table class="task-table">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Description</th>
+                        <th>Due Date</th>
+                        <th>Due Time</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for taskid, task_name, task_description, due_date, due_time in alltasks %}
+                    <tr>
                         <td><input type="text" name="task_name" value="{{ task_name }}"></td>
                         <td><input type="text" name="task_description" value="{{ task_description }}"></td>
                         <td><input type="date" name="due_date" value="{{ due_date }}"></td>
@@ -49,22 +49,24 @@
                                 Edit
                             </button>
                         </td>
-                    </form>
-                    <td>
-                        <form method="post" action="/tasks/">
-                            <input type="hidden" name="task_id" value="{{ taskid }}">
-                            {% csrf_token %}
+                        <td>
                             <button type="submit" name="delete" class="btn-icon">
                                 <img src="{% static 'image/delete.png' %}" alt="Delete Icon" class="icon">
                                 Delete
                             </button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="6" class="todaystask">No task available</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+            </table>
+        </form>
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
