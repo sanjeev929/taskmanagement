@@ -11,6 +11,7 @@ db = client[settings.MONGODB_NAME]
 usercollection = db['users']
 alltaskscollection = db['alltasks']
 
+
 def index(request):
     email = request.COOKIES.get('email')
     if email is not None:
